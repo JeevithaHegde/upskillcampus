@@ -1,0 +1,8 @@
+# Load holiday and special event data
+event_data = pd.read_csv('special_events.csv')
+
+# Categorize events based on impact
+# For example, you can create a 'Traffic_Impact' column: High, Moderate, Low
+
+# Merge traffic data with event data to associate events with traffic patterns
+merged_data = pd.merge(traffic_data, event_data, on='Date', how='left')
