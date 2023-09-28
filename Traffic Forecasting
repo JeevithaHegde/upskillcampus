@@ -1,0 +1,21 @@
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LinearRegression
+from sklearn.metrics import mean_squared_error
+
+# Assume you've prepared features (e.g., time of day, day of the week, weather) and target variable ('Volume')
+X = traffic_data[['TimeOfDay', 'DayOfWeek', 'Weather']]
+y = traffic_data['Volume']
+
+# Split the data into training and testing sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# Train a linear regression model
+model = LinearRegression()
+model.fit(X_train, y_train)
+
+# Make predictions
+predictions = model.predict(X_test)
+
+# Calculate RMSE to evaluate the model's performance
+rmse = np.sqrt(mean_squared_error(y_test, predictions))
+print(f'Root Mean Squared Error: {rmse}')
